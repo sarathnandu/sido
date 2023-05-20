@@ -22,6 +22,9 @@ else()
   endif()
 endif()
 
+set(BLAS_LIBRARIES "/usr/local/lib/libblas.a")
+set(LAPACK_LIBRARIES "/usr/local/lib/liblapack.a")
+
 add_library(Math::BLAS_LAPACK INTERFACE IMPORTED)
 find_package(LAPACK REQUIRED)
 

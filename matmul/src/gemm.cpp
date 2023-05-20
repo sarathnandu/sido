@@ -1,13 +1,13 @@
-#include "mkl.h"
 #include <random>
 #include <algorithm>
 #include <iostream>
-#include "numerics.hpp"
-#include "cxxopts.hpp"
 #include <chrono>
 #ifdef CAPE
 #include "measure.h"
 #endif
+
+#include "cxxopts.hpp"
+#include "numerics.hpp"
 
 using namespace numerics;
 using namespace std::chrono;

@@ -31,4 +31,5 @@ build() {
 }
 
 build icpx 
-build icpc 
+#build icpc 
+#build g++
