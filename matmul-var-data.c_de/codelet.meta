@@ -1,0 +1,4 @@
+application name=LoopGen
+batch name=matmul-var-data
+code name=matmul-var-data.c
+codelet name=matmul-var-data.c_de
