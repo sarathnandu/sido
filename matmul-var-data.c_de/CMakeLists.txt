@@ -7,4 +7,4 @@ set(SOURCE_FILES main.c core.c wrapper.c)
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(matmul-var-data.c_de ${SOURCE_FILES})
-target_link_libraries(matmul-var-data.c_de measure)
+target_link_libraries(matmul-var-data.c_de measure blas)
