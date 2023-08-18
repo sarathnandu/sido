@@ -3,14 +3,14 @@ CFLAGS=-c -g -std=c99 -O3
 #-xSSE4.2
 LDFLAGS=-g -lm
 EXEC=wrapper
-LIBS=-lmeasure
+LIBS=-lmeasure -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
 # For now
 LIBPATH=../../../../lib
 
 all: $(EXEC)
 
 $(EXEC): core.o wrapper.o main.o
-	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS) -L$(LIBPATH)
+	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS) -L$(LIBPATH) -L${MKLROOT}/lib/intel64
 
 main.o: main.c
 	$(CC) -g -o $@ $< $(CFLAGS) -c -O0
