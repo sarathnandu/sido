@@ -1,0 +1,102 @@
+=================================================
+            Trace Event Information              
+=================================================
+  Total records                     :    1102291
+  Locked Load/Store Operations      :          0
+  Load Operations                   :     705294
+  Loads - uncacheable               :          0
+  Loads - IO                        :          0
+  Loads - Miss                      :          0
+  Loads - no mapping                :          0
+  Load Fill Buffer Hit              :          0
+  Load L1D hit                      :     697701
+  Load L2D hit                      :        490
+  Load LLC hit                      :       6984
+  Load Local HITM                   :          0
+  Load Remote HITM                  :          0
+  Load Remote HIT                   :          0
+  Load Local DRAM                   :        119
+  Load Remote DRAM                  :          0
+  Load MESI State Exclusive         :        119
+  Load MESI State Shared            :          0
+  Load LLC Misses                   :        119
+  Load access blocked by data       :          0
+  Load access blocked by address    :          0
+  Load HIT Local Peer               :       2239
+  Load HIT Remote Peer              :          0
+  LLC Misses to Local DRAM          :      100.0%
+  LLC Misses to Remote DRAM         :        0.0%
+  LLC Misses to Remote cache (HIT)  :        0.0%
+  LLC Misses to Remote cache (HITM) :        0.0%
+  Store Operations                  :     396997
+  Store - uncacheable               :          0
+  Store - no mapping                :          0
+  Store L1D Hit                     :          0
+  Store L1D Miss                    :          0
+  Store No available memory level   :     396997
+  No Page Map Rejects               :        153
+  Unable to parse data source       :          0
+
+=================================================
+    Global Shared Cache Line Event Information   
+=================================================
+  Total Shared Cache Lines          :         17
+  Load HITs on shared lines         :      73433
+  Fill Buffer Hits on shared lines  :          0
+  L1D hits on shared lines          :      66516
+  L2D hits on shared lines          :         11
+  LLC hits on shared lines          :       6906
+  Load hits on peer cache or nodes  :       2239
+  Locked Access on shared lines     :          0
+  Blocked Access on shared lines    :          0
+  Store HITs on shared lines        :          3
+  Store L1D hits on shared lines    :          0
+  Store No available memory level   :          3
+  Total Merged records              :          3
+
+=================================================
+                 c2c details                     
+=================================================
+  Events                            : arm_spe_0/ts_enable=1,pa_enable=1,load_filter=1,store_filter=1,min_latency=30/
+                                    : dummy:u
+                                    : memory
+  Cachelines sort on                : Peer Snoop
+  Cacheline data grouping           : offset,iaddr
+
+=================================================
+           Shared Data Cache Line Table          
+=================================================
+#
+#        ----------- Cacheline ----------     Peer  ------- Load Peer -------    Total    Total    Total  --------- Stores --------  ----- Core Load Hit -----  - LLC Load Hit --  - RMT Load Hit --  --- Load Dram ----
+# Index             Address  Node  PA cnt    Snoop    Total    Local   Remote  records    Loads   Stores    L1Hit   L1Miss      N/A       FB       L1       L2    LclHit  LclHitm    RmtHit  RmtHitm       Lcl       Rmt
+# .....  ..................  ....  ......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  ........  .......  ........  .......  ........  ........
+#
+      0      0xc6d8b5925340     0   57423   99.11%     2219     2219        0    73242    73242        0        0        0        0        0    66377        5      6860        0         0        0         0         0
+      1  0xffffad15ca5d79c0     0       1    0.13%        3        3        0       55       55        0        0        0        0        0       44        0        11        0         0        0         0         0
+
+=================================================
+      Shared Cache Line Distribution Pareto      
+=================================================
+#
+#        -- Peer Snoop --  ------- Store Refs ------  --------- Data address ---------                      ---------- cycles ----------    Total       cpu                                       Shared                         
+#   Num      Rmt      Lcl   L1 Hit  L1 Miss      N/A              Offset  Node  PA cnt        Code address  rmt peer  lcl peer      load  records       cnt                          Symbol       Object        Source:Line  Node
+# .....  .......  .......  .......  .......  .......  ..................  ....  ......  ..................  ........  ........  ........  .......  ........  ..............................  ...........  .................  ....
+#
+  ----------------------------------------------------------------------
+      0        0     2219        0        0        0      0xc6d8b5925340
+  ----------------------------------------------------------------------
+           0.00%   21.00%    0.00%    0.00%    0.00%                 0x0     0       1      0xc6d88b661b6c         0      4088      4092     9928         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%   20.91%    0.00%    0.00%    0.00%                 0x4     0       1      0xc6d88b661b6c         0      4095      4093    10055         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%    9.55%    0.00%    0.00%    0.00%                 0x8     0       1      0xc6d88b661b6c         0      4045      4064     2964         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%    8.56%    0.00%    0.00%    0.00%                 0xc     0       1      0xc6d88b661b6c         0      4095      4077     2938         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%    9.06%    0.00%    0.00%    0.00%                0x10     0       1      0xc6d88b661b6c         0      4042      4065     3030         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%    9.69%    0.00%    0.00%    0.00%                0x14     0       1      0xc6d88b661b6c         0      4071      4068     2996         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%   10.27%    0.00%    0.00%    0.00%                0x18     0       1      0xc6d88b661b6c         0      4053      4068     3013         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+           0.00%   10.95%    0.00%    0.00%    0.00%                0x1c     0       1      0xc6d88b661b6c         0      4057      4066     3017         1  [.] unsigned long workload<Acc  bench_debug  atomic_base.h:505   0
+
+  ----------------------------------------------------------------------
+      1        0        3        0        0        0  0xffffad15ca5d79c0
+  ----------------------------------------------------------------------
+           0.00%   33.33%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffad15c719477c         0       193        88        6         5  [k] calc_global_load_tick  [kernel.kallsyms]  calc_global_load_tick+20   0
+           0.00%   33.33%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffad15c721ceb8         0       175        65       18         8  [k] update_process_times   [kernel.kallsyms]  update_process_times+96    0
+           0.00%   33.33%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffad15c723b9ac         0       180       180        4         3  [k] tick_nohz_handler      [kernel.kallsyms]  tick_nohz_handler+108      0
