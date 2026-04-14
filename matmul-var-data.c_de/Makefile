@@ -5,7 +5,7 @@ LDFLAGS=-g -lm
 EXEC=wrapper
 LIBS=-lmeasure
 # For now
-LIBPATH=../../../../lib
+LIBPATH=.
 
 all: $(EXEC)
 

@@ -7,7 +7,7 @@
 #include <limits.h>
 #include <math.h>
 #include <string.h>
-#include "mkl.h"
+//#include "mkl.h"
 
 #define MKL_MATMUL (0u)
 #define NAIVE_MATMUL (1u)
