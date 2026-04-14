@@ -1,0 +1,60 @@
+Target processor is: ARM Neoverse N1 (aarch64/ARM NEOVERSE N1 micro-architecture).
+
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+
+** [MAQAO] Error: Unsupported architecture for the unexpensive FP math modifier
+Section 1: Function: core
+=========================
+
+These loops are supposed to be defined in: /home/sarram02/sido/matmul-var-data.c_de/core.c
+
+
+Section 1.1: Binary loop #1
+===========================
+
+The loop is defined in /home/sarram02/sido/matmul-var-data.c_de/core.c:19-20.
+
+The related source loop is not unrolled or unrolled with no peel/tail loop.
+6% of peak computational performance is used (1.00 out of 16.00 FLOP per cycle (GFLOPS @ 1GHz))
+
+Vectorization
+-------------
+Your loop is not vectorized.
+2 data elements could be processed at once in vector registers.
+By vectorizing your loop, you can lower the cost of an iteration from 2.00 to 1.00 cycles (2.00x speedup).
+All VPU instructions are used in scalar version (process only one data element in vector registers).
+Since your execution units are vector units, only a vectorized loop can use their full power.
+
+Workaround(s):
+ - Try another compiler or update/tune your current one:
+  * recompile with fassociative-math (included in Ofast or ffast-math) to extend loop vectorization to FP reductions.
+ - Remove inter-iterations dependences from your loop and make it unit-stride:
+  * If your arrays have 2 or more dimensions, check whether elements are accessed contiguously and, otherwise, try to permute loops accordingly:
+C storage order is row-major: for(i) for(j) a[j][i] = b[j][i]; (slow, non stride 1) => for(i) for(j) a[i][j] = b[i][j]; (fast, stride 1)
+  * If your loop streams arrays of structures (AoS), try to use structures of arrays instead (SoA):
+for(i) a[i].x = b[i].x; (slow, non stride 1) => for(i) a.x[i] = b.x[i]; (fast, stride 1)
+
+
+FMA
+---
+Presence of both ADD/SUB and MUL operations.
+Workaround(s):
+Try to change order in which elements are evaluated (using parentheses) in arithmetic expressions containing both ADD/SUB and MUL operations to enable your compiler to generate FMA instructions wherever possible.
+For instance a + b*c is a valid FMA (MUL then ADD).
+However (a+b)* c cannot be translated into an FMA (ADD then MUL).
+
+
+All innermost loops were analyzed.
+
+[MAQAO] Info: Rerun CQA with conf=hint,expert to display more advanced reports or conf=all to display them with default reports.
